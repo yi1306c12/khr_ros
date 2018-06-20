@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  master:
+    build: .
+    container_name: master
+    command: roscore
+
+  caller:
+    build: .
+    container_name: caller
+    environment:
+      - "ROS_HOSTNAME=caller"
+      - "ROS_MASTER_URI=http://master:11311"
+    volumes:
+      - .:/root
+    command: bash /root/caller.bash
+
+  server:
+    build: .
+    container_name: server
+    environment:
+      - "ROS_HOSTNAME=server"
+      - "ROS_MASTER_URI=http://master:11311"
+    command: rosrun roscpp_tutorials listener
