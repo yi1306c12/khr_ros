@@ -137,10 +137,10 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/khr_ros_node.cpp)
 add_executable(server src/server.cpp)
 target_link_libraries(server ${catkin_LIBRARIES})
-add_dependencies(server khr_ros)
+add_dependencies(server ${catkin_EXPORTED_TARGETS})
 add_executable(caller src/caller.cpp)
 target_link_libraries(caller ${catkin_LIBRARIES})
-add_dependencies(caller khr_ros)
+add_dependencies(caller ${catkin_EXPORTED_TARGETS})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
