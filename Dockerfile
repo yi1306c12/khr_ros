@@ -1,9 +1,14 @@
 #https://hub.docker.com/r/_/ros/
 
-FROM ros:kinetic
+#FROM ros:kinetic
+#for debug
+FROM ros_kinetic_updated
 
-RUN apt update -y && apt upgrade -y
-RUN apt install -y git
+
+#RUN apt update -y && apt upgrade -y
+#RUN apt install -y git
+
+# for running tutorials
 #RUN apt install -y ros-kinetic-ros-tutorials ros-kinetic-common-tutorials
 
 # add user
@@ -17,7 +22,8 @@ WORKDIR catkin_ws/src
 RUN bash /ros_entrypoint.sh catkin_init_workspace
 
 # download & compile sources
-RUN git clone https://github.com/yi1306c12/khr_ros
+RUN git clone https://github.com/yi1306c12/khr_ros khr_ros
+RUN bash /ros_entrypoint.sh catkin_create_pkg khr_ros std_msgs std_srvs rospy roscpp
 WORKDIR /home/rosuser/catkin_ws
 RUN bash /ros_entrypoint.sh catkin_make
 
