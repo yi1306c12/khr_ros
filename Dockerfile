@@ -23,7 +23,7 @@ RUN bash /ros_entrypoint.sh catkin_init_workspace
 
 # download & compile sources
 RUN git clone https://github.com/yi1306c12/khr_ros khr_ros
-RUN bash /ros_entrypoint.sh catkin_create_pkg khr_ros std_msgs std_srvs rospy roscpp
+#RUN bash /ros_entrypoint.sh catkin_create_pkg khr_ros std_msgs std_srvs rospy roscpp
 WORKDIR /home/rosuser/catkin_ws
 RUN bash /ros_entrypoint.sh catkin_make
 
