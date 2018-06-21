@@ -1,15 +1,19 @@
 #https://hub.docker.com/r/_/ros/
 
-#FROM ros:kinetic
+FROM ros:melodic
 #for debug
-FROM ros_kinetic_updated
+#FROM ros_kinetic_updated
 
 
-#RUN apt update -y && apt upgrade -y
-#RUN apt install -y git
+RUN apt update -y && apt upgrade -y
+RUN apt install -y git
 
 # for running tutorials
 #RUN apt install -y ros-kinetic-ros-tutorials ros-kinetic-common-tutorials
+
+# add devel.setup
+#RUN sed -e "$ a #!/bin/bash"
+#RUN sed -e "$ i [[ -f  /home/rosuser/catkin_ws/devel/setup.bash ]] && source /home/rosuser/catkin_ws/devel/setup.bash" /ros_entrypoint.sh > /ros_entrypoint.sh
 
 # add user
 RUN useradd -ms /bin/bash rosuser
@@ -27,5 +31,8 @@ RUN git clone https://github.com/yi1306c12/khr_ros khr_ros
 WORKDIR /home/rosuser/catkin_ws
 RUN bash /ros_entrypoint.sh catkin_make
 
+
 # set home directory
+USER rosuser
 WORKDIR /home/rosuser
+RUN echo "$ i [[ -f  /home/rosuser/catkin_ws/devel/setup.bash ]] && source /home/rosuser/catkin_ws/devel/setup.bash" > .bashrc
