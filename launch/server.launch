@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="khr_ros" name="server" type="server">
+</lanuch>

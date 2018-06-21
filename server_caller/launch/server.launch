@@ -1,3 +1,0 @@
-<launch>
-    <node pkg="server_caller" name="server" type="server">
-</lanuch>

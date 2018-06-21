@@ -14,7 +14,7 @@ services:
       - "ROS_MASTER_URI=http://master:11311"
     volumes:
       - .:/root
-    command: bash /ros_entrypoint.sh roslaunch caller
+    command: bash /ros_entrypoint.sh roslaunch khr_ros caller
 
   server:
     build: .
@@ -22,4 +22,4 @@ services:
     environment:
       - "ROS_HOSTNAME=server"
       - "ROS_MASTER_URI=http://master:11311"
-    command: bash /ros_entrypoint.sh roslaunch server
+    command: bash /ros_entrypoint.sh roslaunch khr_ros server
