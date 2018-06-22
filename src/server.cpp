@@ -1,8 +1,8 @@
 #include "ros/ros.h"
 #include "khr_ros/AddTwoInts.h"
 
-bool add(beginner_tutorials::AddTwoInts::Request  &req,
-         beginner_tutorials::AddTwoInts::Response &res)
+bool add(khr_ros::AddTwoInts::Request  &req,
+         khr_ros::AddTwoInts::Response &res)
 {
   res.sum = req.a + req.b;
   ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
