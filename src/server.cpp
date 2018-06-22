@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "beginner_tutorials/AddTwoInts.h"
+#include "khr_ros/AddTwoInts.h"
 
 bool add(beginner_tutorials::AddTwoInts::Request  &req,
          beginner_tutorials::AddTwoInts::Response &res)

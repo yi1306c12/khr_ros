@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "beginner_tutorials/AddTwoInts.h"
+#include "khr_ros/AddTwoInts.h"
 #include <cstdlib>
 
 int main(int argc, char **argv)
