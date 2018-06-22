@@ -55,6 +55,7 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate services in the 'srv' folder
+rosbuild_gensrv()
 add_service_files(
    AddTwoInts.srv
 )
