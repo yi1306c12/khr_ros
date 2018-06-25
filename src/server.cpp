@@ -13,7 +13,7 @@ public:
     ROS_INFO("sending back response: [%ld]", (long int)res.sum);
     return true;
   }
-}
+};
 
 int main(int argc, char **argv)
 {
