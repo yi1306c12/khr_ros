@@ -20,4 +20,4 @@ services:
     container_name: server
     environment:
       - "ROS_HOSTNAME=server"
-    command: bash /ros_entrypoint.sh roslaunch khr_ros server
+    command: bash -c "source catkin_ws/devel/setup.bash; rosrun khr_ros server"
