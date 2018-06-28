@@ -7,18 +7,21 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "add_two_ints_client");
   if (argc != 3)
   {
-    ROS_INFO("usage: add_two_ints_client X Y");
+    ROS_INFO("usage: add_two_ints_client X Y Z");
     return 1;
   }
 
   ros::NodeHandle n;
   ros::ServiceClient client = n.serviceClient<khr_ros::AddTwoInts>("add_two_ints");
   khr_ros::AddTwoInts srv;
-  srv.request.a = atoll(argv[1]);
-  srv.request.b = atoll(argv[2]);
+  for(int i = 0; i < 3; ++i)
+  {
+    srv.request.action[i] = atoi(argv[i]);
+  }
+
   if (client.call(srv))
   {
-    ROS_INFO("Sum: %ld", (long int)srv.response.sum);
+    ROS_INFO("Sum: %d,%d,%d", srv.response.angle[0],srv.response.angle[1],srv.response.angle[2]);
   }
   else
   {
