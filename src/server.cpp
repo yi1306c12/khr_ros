@@ -1,20 +1,20 @@
 #include "ros/ros.h"
-#include "khr_ros/AddTwoInts.h"
+#include "khr_ros/khr_srv.h"
 
 #include<vector>
 using std::vector;
 
 //http://wiki.ros.org/roscpp_tutorials/Tutorials/UsingClassMethodsAsCallbacks
-struct AddTwoInts_service
+struct khr_service
 {
   const int N;
 public:
 
-  AddTwoInts_service(const int n):N(n)
+  khr_service(const int n):N(n)
   {}
 
-  bool add(khr_ros::AddTwoInts::Request  &req,
-          khr_ros::AddTwoInts::Response &res)
+  bool add(khr_ros::khr_srv::Request  &req,
+          khr_ros::khr_srv::Response &res)
   {
     for(int i = 0;i < N;++i)
     {
@@ -28,13 +28,13 @@ public:
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "add_two_ints_server");
+  ros::init(argc, argv, "khr_server");
   ros::NodeHandle n;
 
-  AddTwoInts_service ati = AddTwoInts_service(3);
+  khr_service ati = khr_service(3);
 
-  ros::ServiceServer service = n.advertiseService("add_two_ints", &AddTwoInts_service::add, &ati);
-  ROS_INFO("Ready to add two ints.");
+  ros::ServiceServer service = n.advertiseService("khr_srv", &khr_service::add, &ati);
+  ROS_INFO("Ready khr.");
   ros::spin();
 
   return 0;

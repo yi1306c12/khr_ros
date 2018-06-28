@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "khr_ros/AddTwoInts.h"
+#include "khr_ros/khr_srv.h"
 #include <cstdlib>
 
 int main(int argc, char **argv)
@@ -12,8 +12,8 @@ int main(int argc, char **argv)
   }
 
   ros::NodeHandle n;
-  ros::ServiceClient client = n.serviceClient<khr_ros::AddTwoInts>("add_two_ints");
-  khr_ros::AddTwoInts srv;
+  ros::ServiceClient client = n.serviceClient<khr_ros::khr_srv>("khr_srv");
+  khr_ros::khr_srv srv;
   for(int i = 0; i < 3; ++i)
   {
     srv.request.action[i] = atoi(argv[i+1]);
