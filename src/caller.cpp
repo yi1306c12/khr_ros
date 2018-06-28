@@ -5,7 +5,7 @@
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "add_two_ints_client");
-  if (argc != 3)
+  if (argc != 4)
   {
     ROS_INFO("usage: add_two_ints_client X Y Z");
     return 1;
@@ -14,7 +14,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   ros::ServiceClient client = n.serviceClient<khr_ros::AddTwoInts>("add_two_ints");
   khr_ros::AddTwoInts srv;
-  for(int i = 0; i < 3; ++i)
+  for(int i = 1; i < 4; ++i)
   {
     srv.request.action[i] = atoi(argv[i]);
   }
