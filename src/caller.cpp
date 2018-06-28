@@ -14,9 +14,9 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   ros::ServiceClient client = n.serviceClient<khr_ros::AddTwoInts>("add_two_ints");
   khr_ros::AddTwoInts srv;
-  for(int i = 1; i < 4; ++i)
+  for(int i = 0; i < 3; ++i)
   {
-    srv.request.action[i] = atoi(argv[i]);
+    srv.request.action[i] = atoi(argv[i+1]);
   }
 
   if (client.call(srv))
