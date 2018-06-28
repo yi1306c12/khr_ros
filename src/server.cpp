@@ -7,12 +7,12 @@ using std::vector;
 //http://wiki.ros.org/roscpp_tutorials/Tutorials/UsingClassMethodsAsCallbacks
 struct AddTwoInts_service
 {
-  int N;
+  const int N;
 public:
-  AddTwoInts_service(const int n)
-  {
-    N = n;
-  }
+
+  AddTwoInts_service(const int n):N(n)
+  {}
+
   bool add(khr_ros::AddTwoInts::Request  &req,
           khr_ros::AddTwoInts::Response &res)
   {
