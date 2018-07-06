@@ -1,0 +1,6 @@
+int16 id
+int16 rotation
+---
+int16 angle
+int16 current
+int16 temparature

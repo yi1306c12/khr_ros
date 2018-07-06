@@ -59,6 +59,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(
     FILES
     khr_srv.srv
+    single_servo.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -141,6 +142,12 @@ add_dependencies(server ${catkin_EXPORTED_TARGETS})
 add_executable(caller src/caller.cpp)
 target_link_libraries(caller ${catkin_LIBRARIES})
 add_dependencies(caller ${catkin_EXPORTED_TARGETS})
+add_executable(server_single src/server_single.cpp)
+target_link_libraries(server_single ${catkin_LIBRARIES})
+add_dependencies(server_single ${catkin_EXPORTED_TARGETS})
+add_executable(caller_single src/caller_single.cpp)
+target_link_libraries(caller_single ${catkin_LIBRARIES})
+add_dependencies(caller_single ${catkin_EXPORTED_TARGETS})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
