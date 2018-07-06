@@ -176,12 +176,12 @@ bool khr_serv(khr_ros::single_servo::Request &req, khr_ros::single_servo::Respon
 {
     kondo_servo servo(req.id);
 
-    const unsigned short r = servo.rotate(static_cast<unsigned short>(req.rotate));
+    const unsigned short r = servo.rotate(static_cast<unsigned short>(req.rotation));
     res.angle = static_cast<int>(r);
     res.current = static_cast<int>(servo.current());
     res.temparature = static_cast<int>(servo.temperature());
 
-    ROS_INFO("req\tID:%d, R:%d", req.id, req.rotate);
+    ROS_INFO("req\tID:%d, R:%d", req.id, req.rotation);
     ROS_INFO("res\tangle:%d\tcurrent:%d\ttemparature:%d", res.angle, res.current, res.temparature);
 
     return true;
@@ -192,7 +192,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "single_servo_server");
     ros::NodeHandle n;
 
-    ros::ServiceServer service = n.advertiseService("single_servo", &khr_serv)
+    ros::ServiceServer service = n.advertiseService("single_servo", &khr_serv);
     ROS_INFO("ready servo");
 
     ros::spin();

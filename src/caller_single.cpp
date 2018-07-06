@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "khr_ros/server_single.h"
+#include "khr_ros/single_servo.h"
 #include <cstdlib>
 
 int main(int argc, char **argv)
@@ -14,12 +14,12 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   ros::ServiceClient client = n.serviceClient<khr_ros::single_servo>("single_servo");
   khr_ros::single_servo srv;
-  srv.id = atoi(argv[1]);
-  srv.rotate = atoi(argv[2]);
+  srv.request.id = atoi(argv[1]);
+  srv.request.rotation = atoi(argv[2]);
 
   if (client.call(srv))
   {
-    ROS_INFO("servo: id:%d\trotate:%d",srv.id,srv.rotate);
+    ROS_INFO("servo: id:%d\trotate:%d",srv.request.id,srv.request.rotation);
   }
   else
   {
